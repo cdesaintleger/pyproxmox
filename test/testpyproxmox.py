@@ -1,5 +1,5 @@
 import sys
-sys.path.append("../src")
+sys.path.append("../")
 from pyproxmox import prox_auth,pyproxmox
 
 a = prox_auth('pnode01','apiuser@pve', 'apipasswd')
