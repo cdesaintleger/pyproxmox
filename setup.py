@@ -6,5 +6,12 @@ setup(name='pyproxmox',
       description=('Proxmox API wrapper'),
       author='Daemonthread',
       url='https://github.com/Daemonthread/pyproxmox',
-      packages=find_packages(exclude=['contrib', 'docs', 'tests']),
+      packages=(
+        'pyproxmox',
+    ),
+    package_data={
+        'pyproxmox': [
+            'src/*',
+        ]
+    },
 )
