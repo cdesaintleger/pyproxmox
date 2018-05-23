@@ -9,9 +9,4 @@ setup(name='pyproxmox',
       packages=(
         'pyproxmox',
     ),
-    package_data={
-        'pyproxmox': [
-            'src/*',
-        ]
-    },
 )
