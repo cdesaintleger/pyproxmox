@@ -107,7 +107,7 @@ class pyproxmox:
                                           headers = httpheaders)
         elif conn_type == "get":
             self.response = requests.get (self.full_url, verify=False, 
-                                          cookies = self.ticket)
+                                          cookies = self.ticket, params=post_data)
 
         try:
             self.returned_data = self.response.json()
@@ -499,8 +499,14 @@ class pyproxmox:
         
     def vncproxyVirtualMachine(self,node,vmid):
         """Creates a VNC Proxy for a virtual machine. Returns JSON"""
-        post_data = None
+        post_data = {'websocket':1}
         data = self.connect('post',"nodes/%s/qemu/%s/vncproxy" % (node,vmid), post_data)
+        return data
+
+    def vncwebsocketVirtualMachine(self, node, port, vmid, vncticket):
+        """ Open a websocket for VNC traffic """
+        post_data = {'port':port, 'vncticket':vncticket}
+        data = self.connect('get',"nodes/%s/qemu/%s/vncwebsocket" % (node, vmid), post_data)
         return data
 
     def rollbackVirtualMachine(self,node,vmid,snapname):
